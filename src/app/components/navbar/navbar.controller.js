@@ -21,6 +21,7 @@ angular.module('aiProject')
 
       this.svg = d3.select("nav").append("svg")
         .attr("class", "isoco1")
+        .attr("class", "icosahedron-svg")
         .attr("width", this.width)
         .attr("height", this.height);
 
@@ -60,7 +61,7 @@ angular.module('aiProject')
     };
 
     function init() {
-      d3.selectAll("svg").remove();
+      d3.selectAll(".icosahedron-svg").remove();
 
       var i1 = new Icosahedron(3,.014,.01);
       var i2 = new Icosahedron(3.5,.02,-.02);

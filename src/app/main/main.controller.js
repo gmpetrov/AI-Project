@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('aiProject')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, $location, $interval) {
 
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
@@ -33,4 +33,26 @@ angular.module('aiProject')
 
     render();
 
-  });
+    var onVivusReady = function(_vivus){
+      _vivus
+        .start()
+        .catch(function(err) {
+          console.log("Vivus ERROR : " + err.message);
+        })
+        .then(function(){
+          _vivus.rewind();
+        })
+        .then(function(){
+          //do other stuff
+        });
+    };
+
+    var test = new Vivus('test', {type: 'delayed', duration: 500, animTimingFunction: Vivus.EASE, file: '/assets/svg/my-name-is-jane.svg', onReady: onVivusReady}, null);
+
+    $interval(function(){
+      test.reset().play();
+    }, 15000);
+
+    console.log($location);
+  }
+);

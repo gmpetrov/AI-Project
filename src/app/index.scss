@@ -19,18 +19,24 @@ body {
   background-color: #36393B;
 }
 
-svg {
+.icosahedron-svg {
   position: absolute;
   height: 400px;
   width: 400px;
 }
 
-svg path {
+.icosahedron-svg path {
   opacity: .3;
   fill: none;
   stroke: #3BCD99;
   stroke-width: 1px;
   stroke-linecap: rounded;
+}
+
+.svg-container div svg{
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 50px;
 }
 
 /* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
