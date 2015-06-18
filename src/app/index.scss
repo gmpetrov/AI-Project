@@ -1,0 +1,39 @@
+@import 'components/navbar/navbar';
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+body {
+  background-color: #36393B;
+}
+
+svg {
+  position: absolute;
+  height: 400px;
+  width: 400px;
+}
+
+svg path {
+  opacity: .3;
+  fill: none;
+  stroke: #3BCD99;
+  stroke-width: 1px;
+  stroke-linecap: rounded;
+}
+
+/* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
+   all your sass files automatically */
+// injector
+// endinjector
