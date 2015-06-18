@@ -32,7 +32,7 @@ angular.module('aiProject')
     window.onresize = function(event) { render(); }
 
     render();
-
+    //
     var onVivusReady = function(_vivus){
       _vivus
         .start()
@@ -49,10 +49,11 @@ angular.module('aiProject')
 
     var test = new Vivus('test', {type: 'delayed', duration: 500, animTimingFunction: Vivus.EASE, file: '/assets/svg/my-name-is-jane.svg', onReady: onVivusReady}, null);
 
-    $interval(function(){
-      test.reset().play();
-    }, 15000);
+      var dr = true;
 
-    console.log($location);
-  }
-);
+    $interval(function(){
+      test.play(dr === true ? -1 : 1);
+      dr = !dr;
+    }, 10000);
+
+  });
