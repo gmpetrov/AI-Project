@@ -1,0 +1,7 @@
+.idea
+.tmp
+.yo-rc.json
+bower_components
+dist
+node_modules
+npm-debug.log
