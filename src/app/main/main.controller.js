@@ -3,6 +3,8 @@
 angular.module('aiProject')
   .controller('MainCtrl', function ($scope, $location, $interval) {
 
+      // THREE.JS
+
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 
@@ -32,7 +34,10 @@ angular.module('aiProject')
     window.onresize = function(event) { render(); }
 
     render();
-    //
+
+      /****************************************/
+
+    // SVG ANIMATION
     var onVivusReady = function(_vivus){
       _vivus
         .start()
@@ -56,4 +61,35 @@ angular.module('aiProject')
       dr = !dr;
     }, 10000);
 
+      /****************************************/
+
+      // MICROPHONE STREAM
+
+      var errorCallback = function(e) {
+        console.log('Reeeejected!', e);
+      };
+
+      var launchMicrophoneStream = function(){
+        navigator.getUserMedia  = navigator.getUserMedia ||
+            navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia ||
+            navigator.msGetUserMedia;
+
+        var audio = document.querySelector('audio');
+
+        if (navigator.getUserMedia) {
+          navigator.getUserMedia({audio: true, video: false}, function(stream) {
+            //for (var i = 0; i < audio.length; i++){
+            //  audio[i].src = window.URL.createObjectURL(stream);
+            //}
+            audio.src = window.URL.createObjectURL(stream);
+          }, errorCallback);
+        } else {
+          audio.src = 'somevideo.webm'; // fallback.
+        }
+      };
+
+      //launchMicrophoneStream();
+
+      /****************************************/
   });
